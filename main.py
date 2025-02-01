@@ -1,4 +1,8 @@
 import openai, fitz, time
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def read_text(textname: str):
     with open(textname, 'r') as f:
@@ -19,25 +23,36 @@ def resume_prompt_builder(master_resume_pdf, base_prompt_text, job_desc_text):
     base_prompt = read_text(base_prompt_text)
     job_desc = read_text(job_desc_text)
 
-    final_prompt = base_prompt + '\n\n<master resume>\n\n' + master_resume + '\n\n</master resume>\n\n' + '\n\n<job_desc>\n\n' + job_desc + '\n\n</job_desc>\n\n'
+    final_prompt = f"""
+    {base_prompt}
+
+    <master_resume>
+    {master_resume}
+    </master_resume>
+
+    <job_desc>
+    {job_desc}
+    </job_desc>
+    """
+    # final_prompt = base_prompt + '\n\n\n\n' + master_resume + '\n\n</master resume>\n\n' + '\n\n<job_desc>\n\n' + job_desc + '\n\n</job_desc>\n\n'
     return final_prompt
 
 
 def call_LLM(final_prompt: str):
     client = openai.Client(
         base_url="https://api.groq.com/openai/v1",
-        api_key=""
+        api_key=os.getenv("GROQ_API_KEY")
     )
-
-
-    {
-        "role": "user",
-        "content": final_prompt
-    }
 
     response = client.chat.completions.create(
         model="deepseek-r1-distill-llama-70b",
-        messages=[{"role": "user", "content": "hi, who are you. reply to me in markdown"}],
+        messages=
+            [
+                {
+                    "role": "user",
+                    "content": final_prompt
+                }
+            ],
         temperature=0.7
     )
 
@@ -46,8 +61,4 @@ def call_LLM(final_prompt: str):
     print(f"Content: {content}")
 
 
-
-    
-
-print(read_pdf('Imon_s_Resume_v10.pdf'))
-
+print(resume_prompt_builder('Imon_s_Resume_v10.pdf','prompt.txt','job_desc.txt'))
