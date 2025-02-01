@@ -1,0 +1,23 @@
+Position Summary:
+As a Prompt Engineer, you will play a pivotal role in designing and implementing AI-driven interactions tailored for a healthcare environment. You will collaborate with cross-functional teams, including software developers, UX/UI designers, data scientists, product managers and healthcare professionals. Your work will directly influence how patients and healthcare providers interact with and benefit from our technology.
+Job Description:
+Key Responsibilities
+
+Develop, test, and refine AI prompts to ensure they are clear, accurate, and contextually relevant 
+Analyze user interactions with AI to identify areas for improvement and optimize communication pathways to enhance user experience.
+Work closely with solution architects, technical architects and developers to integrate prompts into the AI models and other parts of the application, effectively.
+Liaise with healthcare experts to ensure prompts meet clinical accuracy and compliance standards.
+Gather and interpret user feedback to refine and innovate prompt strategies.
+Contribute to the design of conversational flows that prioritize patient engagement and user satisfaction.
+Stay up-to-date with industry trends and advancements in AI and related technologies relevant to healthcare.
+Propose and implement novel approaches to enhance prompt responsiveness and overall AI performance.
+Develop testing protocols to evaluate the effectiveness of AI prompts and iterate based on results.
+Ensure the robustness and reliability of prompts in handling diverse patient queries and scenarios.
+Qualifications
+
+Bachelor’s degree in computer science or relevant experience.
+Experience in the healthcare domain (2+ years) with understanding of healthcare terminologies, practices, and concepts. Experience working with primary care providers will be a big plus.
+Proven experience (1+ years) in designing and writing prompts or conversational interfaces in AI applications, preferably within the healthcare domain.
+Experience with Python and Generative APIs like OpenAI / Bedrock / Hugging Face. 
+Excellent problem-solving skills and the ability to think creatively.
+Strong communication skills to translate complex functional and technical concepts into user-friendly prompts.

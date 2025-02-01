@@ -12,7 +12,7 @@ Expand on these sections to better match the job requirements.
 Incorporate keywords and phrases from the job description to optimize for ATS.
 
 3. Output Format:
-Return only the refactored resume in Markdown format.
+Return only the refactored resume in Markdown format (Do not include ``` or ---).
 Do not include any additional explanations, notes, or commentary.
 
 Goal:
