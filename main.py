@@ -1,30 +1,21 @@
-import openai, fitz, time
+import openai, time
 import os
-import markdown
 import subprocess
-import tempfile
 from dotenv import load_dotenv
 
 load_dotenv()
 
-def read_text(textname: str):
-    with open(textname, 'r') as f:
+def read_file(filename: str):
+    with open(filename, 'r', encoding='utf-8') as f:
         return f.read()
 
-def read_pdf(pdfname: str):
-    text = ""
-    with fitz.open(pdfname) as f:
-        for page in f:
-            text += page.get_text()
-        return text
-
-# tokens per minute -> 6000
+# groq tokens per minute -> 6000
 # time.sleep(59)
 
-def resume_prompt_builder(master_resume_pdf, base_prompt_text, job_desc_text):
-    master_resume = read_pdf(master_resume_pdf)
-    base_prompt = read_text(base_prompt_text)
-    job_desc = read_text(job_desc_text)
+def resume_prompt_builder(main_tex, base_prompt_text, job_desc_text):
+    master_resume = read_file(main_tex).split("%%%%%%  RESUME STARTS HERE  %%%%%%")[1]
+    base_prompt = read_file(base_prompt_text)
+    job_desc = read_file(job_desc_text)
 
     final_prompt = f"""
     {base_prompt}
@@ -37,35 +28,19 @@ def resume_prompt_builder(master_resume_pdf, base_prompt_text, job_desc_text):
     {job_desc}
     </job_desc>
     """
-    # final_prompt = base_prompt + '\n\n\n\n' + master_resume + '\n\n</master resume>\n\n' + '\n\n<job_desc>\n\n' + job_desc + '\n\n</job_desc>\n\n'
     return final_prompt
 
-def generate_pdf(markdown_content, output_file, css_file=None):
-    html_content = markdown.markdown(markdown_content, extensions=['extra', 'nl2br'])
+def generate_pdf(latex_content):
+    tex_file = "resume.tex"
+    with open(tex_file, "w", encoding="utf-8") as f:
+        f.write(latex_content)
 
-    if css_file:
-        with open(css_file, "r", encoding="utf-8") as f:
-            css_content = f.read()
-        styled_html = f"""
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <style>{css_content}</style>
-        </head>
-        <body>{html_content}</body>
-        </html>
-        """
-    else:
-        styled_html = html_content
-    
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".html", mode="w", encoding="utf-8") as temp_html:
-        temp_html.write(styled_html)
-        temp_html_path = temp_html.name
-    
-    try:
-        subprocess.run(["weasyprint.exe", temp_html_path, output_file], check=True)
-    finally:
-        os.remove(temp_html_path)
+    subprocess.run(["pdflatex", tex_file], check=True)
+
+    for ext in [".log", ".aux", ".out"]:
+        aux_file = tex_file.replace(".tex", ext)
+        if os.path.exists(aux_file):
+            os.remove(aux_file)
 
 def call_LLM(final_prompt: str):
     # client = openai.Client(
@@ -90,18 +65,23 @@ def call_LLM(final_prompt: str):
                     "content": final_prompt
                 }
             ],
-        temperature=0.7
+        temperature=0.5,
+        top_p=0.5,
+        top_k=30,
+        max_tokens=3000,
     )
 
     content = response.choices[0].message.content
     # print(response.choices[0].message)
-    print(f"Content: {content}")
+
+    print(f"COT: {content.split("</think>")[0]}")
+    return content.split("</think>")[1]
 
 
 if __name__ == "__main__":
-    prompt = resume_prompt_builder('Imon_s_Resume_v10.pdf', 'prompt.txt', 'job_desc.txt')
-    # call_LLM(prompt)
+    prompt = resume_prompt_builder('main.tex', 'prompt.txt', 'job_desc.txt')
+    latex_styling = read_file('main.tex').split("%%%%%%  RESUME STARTS HERE  %%%%%%")[0]
 
-    with open('test.md', 'r', encoding='utf-8') as f:
-        data = f.read()
-    generate_pdf(data, "output.pdf", css_file="styles.css")
+    # # typical token count 7778 in | 2793 out
+    generated_resume = call_LLM(prompt)
+    generate_pdf(latex_styling + generated_resume)

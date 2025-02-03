@@ -1,4 +1,4 @@
-You are an expert resume writer and ATS (Applicant Tracking System) specialist. Below, I will provide a master resume and a job description. Your task is to refactor the resume specifically for this job opening to ensure it passes the recruiter's ATS.
+You are an expert resume writer and ATS (Applicant Tracking System) specialist. Below, I will provide a master resume in LaTeX and a job description. Your task is to refactor the resume specifically for the given job opening below to ensure it passes the recruiter's ATS.
 
 Instructions:
 
@@ -12,7 +12,8 @@ Expand on these sections to better match the job requirements.
 Incorporate keywords and phrases from the job description to optimize for ATS.
 
 3. Output Format:
-Return only the refactored resume in Markdown format (Do not include ``` or ---).
+Return only the refactored resume in LaTeX format as provided in Master resume (Do not add ``` or ---).
+Do not change the formatting or styling in the LaTeX.
 Do not include any additional explanations, notes, or commentary.
 
 Goal:
