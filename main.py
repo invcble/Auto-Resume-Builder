@@ -1,9 +1,11 @@
 import openai, time
 import os
 import subprocess
+from together import Together
 from dotenv import load_dotenv
 
 load_dotenv()
+
 
 def read_file(filename: str):
     with open(filename, 'r', encoding='utf-8') as f:
@@ -11,6 +13,7 @@ def read_file(filename: str):
 
 # groq tokens per minute -> 6000
 # time.sleep(59)
+
 
 def resume_prompt_builder(main_tex, base_prompt_text, job_desc_text):
     master_resume = read_file(main_tex).split("%%%%%%  RESUME STARTS HERE  %%%%%%")[1]
@@ -30,32 +33,35 @@ def resume_prompt_builder(main_tex, base_prompt_text, job_desc_text):
     """
     return final_prompt
 
+
 def generate_pdf(latex_content):
+    print('generating PDF...')
+
     tex_file = "resume.tex"
     with open(tex_file, "w", encoding="utf-8") as f:
         f.write(latex_content)
 
-    subprocess.run(["pdflatex", tex_file], check=True)
+    with open(os.devnull, 'w') as devnull:
+        subprocess.run(["pdflatex", tex_file], stdout=devnull, stderr=devnull, check=True)
 
     for ext in [".log", ".aux", ".out"]:
         aux_file = tex_file.replace(".tex", ext)
         if os.path.exists(aux_file):
             os.remove(aux_file)
+    
+    print('PDF generated.')
+
 
 def call_LLM(final_prompt: str):
+    print('calling LLM...')
+
     # client = openai.Client(
     #     base_url="https://api.groq.com/openai/v1",
     #     api_key=os.getenv("GROQ_API_KEY")
     # )
 
-    client = openai.OpenAI(
-        base_url="https://api.together.xyz/v1",
-        api_key=os.getenv("TOGETHER_API_KEY")
-        
-    )
-
+    client = Together()
     response = client.chat.completions.create(
-        # model="deepseek-r1-distill-llama-70b",
         # model="deepseek-ai/DeepSeek-V3",
         model="deepseek-ai/DeepSeek-R1",
         messages=
@@ -69,18 +75,20 @@ def call_LLM(final_prompt: str):
         top_p=0.5,
         top_k=30,
         max_tokens=3000,
+        repetition_penalty=1,
     )
 
     content = response.choices[0].message.content
     # print(response.choices[0].message)
 
-    print(f"COT: {content.split("</think>")[0]}")
+    print(f"COT: {content.split('</think>')[0]}")
     return content.split("</think>")[1]
 
 
 if __name__ == "__main__":
     prompt = resume_prompt_builder('main.tex', 'prompt.txt', 'job_desc.txt')
     latex_styling = read_file('main.tex').split("%%%%%%  RESUME STARTS HERE  %%%%%%")[0]
+    # generated_resume = read_file('main.tex').split("%%%%%%  RESUME STARTS HERE  %%%%%%")[1]
 
     # # typical token count 7778 in | 2793 out
     generated_resume = call_LLM(prompt)
