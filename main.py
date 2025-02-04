@@ -1,5 +1,7 @@
 import openai, time
 import os
+import shutil
+from datetime import datetime
 import subprocess
 from together import Together
 from dotenv import load_dotenv
@@ -93,3 +95,16 @@ if __name__ == "__main__":
     # # typical token count 7778 in | 2793 out
     generated_resume = call_LLM(prompt)
     generate_pdf(latex_styling + generated_resume)
+
+    applications_dir = "applications"
+    os.makedirs(applications_dir, exist_ok=True)
+
+    company_job_role = input("Enter the company and job role: ")
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
+
+    app_folder = os.path.join(applications_dir, f"{company_job_role} - {timestamp}")
+    os.makedirs(app_folder, exist_ok=True)
+
+    shutil.copy("job_desc.txt", os.path.join(app_folder, "job_desc.txt"))
+    shutil.move("resume.tex", os.path.join(app_folder, "resume.tex"))
+    print(f"Application saved in: {app_folder}")
