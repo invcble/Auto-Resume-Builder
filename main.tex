@@ -1,0 +1,282 @@
+%-------------------------
+% Resume in Latex
+% Author : Imon Bera
+%------------------------
+
+%\documentclass[a4paper,10pt]{article}
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.8in}
+\addtolength{\evensidemargin}{-0.72in}
+\addtolength{\textwidth}{1.6in}
+\addtolength{\topmargin}{-0.92in}
+\addtolength{\textheight}{2in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-13.5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-9.5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-5pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{0pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{#2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-10pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Imon Bera} \\ \vspace{1pt}
+    \small +1 267-466-7408 $|$ 
+    \href{mailto:ib385@drexel.edu}{ib385@drexel.edu} $|$ 
+    \href{https://www.linkedin.com/in/imonbera13/}{\underline{linkedin.com/in/imonbera13/}} $|$
+    \href{https://github.com/invcble}{\underline{github.com/invcble}\vspace{-10pt}}
+\end{center}
+
+%-----------ABOUT ME-----------
+\section{About me}
+  \vspace{0.2em}
+    \hspace{0.15in}\begin{tabular}{p{0.97\linewidth}}
+    I am pursuing \textbf{Master’s} in \textbf{Computer Science} at \textbf{Drexel University} (exp. Grad in June, 2025) with specialization in \textbf{Artificial Intelligence} and \textbf{Machine Learning (AI/ML)}. I have a sound understanding of various \textbf{AI frameworks, cloud-based solutions} and \textbf{deployment methods}. I have strong knowledge in \textbf{AI automation, Python, Databases (SQL, noSQL, vectorDB)} and various cloud platforms (\textbf{GCP, AWS} and \textbf{Azure}). I have hands-on-experience of implementing \textbf{Deep Learning models} with variety of Machine Learning libraries like \textbf{TensorFlow, Pytorch, and Scikit-learn}. I am a quick learner and avid problem solver. I am seeking a challenging role that allows me to utilize my skills and continuously enhance my expertise.
+\end{tabular}
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Drexel University}{Sep. 2023 -- Present}
+    {Master of Science in Computer Science, GPA: 3.85}{Philadelphia, PA}
+  \resumeSubheading
+    {Bengal Institute of Technology}{Jul. 2019 -- Jun. 2023}
+    {Bachelor of Technology in Computer Science and Engineering, CGPA: 9.14}{Kolkata, WB}
+\resumeSubHeadingListEnd
+
+  \vspace{0.2em}
+    \hspace{0.15in}\begin{tabular}{p{0.94\linewidth}}
+    \textit{{Coursework}: Machine Learning, Deep Learning, Computer Vision, Data Structures \& Algorithms, Software Design (Java), Full Stack, Agile Methodology, Object Oriented Programming, Operating Systems, Database, DevOps, CI/CD.}
+\end{tabular}
+
+
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small
+    \vspace{2pt}{\item{
+     \textbf{Languages}{: Python, Java, Scala, SQL, C, C++, HTML, CSS} \\
+     \textbf{Dev Tools}{: Git, Matlab, Google Colaboratory, Visual Studio Code, PyCharm, IntelliJ, Eclipse, LaTeX, Spark, Tableau, Jira, Confluence, Swagger/OpenAPI, Groq, Ollama (LLM Tool), LM Studio} \\
+     \textbf{Cloud Tools}{: Artifact Registry, Vertex AI, Firestore, Terraform, Pulumi, Docker} \\
+     \textbf{Cloud Platforms}{: Google Cloud Platform, AWS, Azure} \\
+     \textbf{Databases}{: MySQL, PostgreSQL, Firebase, Qdrant, Pinecone, Milvus} \\
+     \textbf{Libraries}{: TensorFlow, Pytorch, Keras, Scikit-learn, Flask, pandas, NumPy, Matplotlib, OpenCV, PIL, CV2, VADER, Word2Vec, GloVe, FAISS, PyMongo, pyautogui, Tkinter, Customtkinter, Win32GUI, PyQt}
+    }}
+ \end{itemize}
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+
+  \resumeSubheading
+    {AI Engineer Intern}{Jun 2024 - Dec 2024}
+    {Tapistro, Inc.}{San Francisco, CA}
+    \resumeItemListStart
+      \resumeItem{Designed an end-to-end LLM Agentic RAG framework with a periodic web scraper for signal accounts and parallel error reduction, integrating Function Calling, Code Interpreter, and a JSON extractor, and storing embeddings in Firebase’s vector DB enabling automation and business processes optimization.}
+      \resumeItem{Developed a fallback search engine pipeline integrating Bing Search API v7 and Google’s Custom Search API, reducing ‘no-answer’ error rates by 35\% for queries unsupported (yet to populate/live data) by Firestore’s Knowledge Vector.}
+      \resumeItem{Collaborated with core team to create AI-Infused RESTful API systems for account engagement to deliver automated persona enrichment, reducing manual work by 80\%. Fine-tuned machine learning models to improve decision making and client interactions.}\resumeItem{Leveraged scalable, on-demand GPU computing on Hugging Face models through vLLM and llama.cpp, optimizing resource usage with quantized formats (GGUF, INT8, BF16) and achieving a 90\% cost reduction compared to GPT-4o API pricing at the time.}
+      \resumeItem{Managed cloud infrastructure with GCP tools including Kubernetes, Docker, Terraform, and Pulumi scripts, and automated testing and deployments via CI/CD pipelines using GCP Cloud Run and Cloud Artifacts.}
+    \resumeItemListEnd
+
+  
+  \resumeSubheading
+    {Research Assistant}{Jan. 2024 -- Mar. 2024}
+    {LeBow College of Business}{Philadelphia, PA}
+    \resumeItemListStart
+      \resumeItem{Developed and deployed Windows automation macro scripts in Python utilizing libraries such as pyautogui, pygetwindow, subprocess, SimpleXMLRPCServer, and ctypes, reducing manual data handling in research workflows.}
+      \resumeItem{Designed and optimized an automation control panel and survey browser using Python libraries Tkinter and PyQt, enhancing accessibility and reliability.}
+      \resumeItem{Engineered Artemis log extraction automation solutions for streamlined data analysis, alongside an RPC macro for remote execution of Python scripts to improve research operations.}
+      \resumeItem{Migrated legacy Perl scripts to Python, achieving a 70\% improvement in runtime and significantly enhancing automation reliability.}
+    \resumeItemListEnd
+      
+\resumeSubHeadingListEnd
+
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {Climate Risk Analysis Platform, Chubb Challenge Winner}{Apr. 2024}
+    {Hackathon: Philly Codefest}{Philadelphia, PA}
+    \resumeItemListStart
+      \resumeItem{Developed a sophisticated climate risk analysis platform, awarded first place in the Chubb Challenge at Philly Codefest, employing Poisson's distribution for statistical modeling of disaster event frequency and custom deep learning model with an autoencoder for accurate financial damage estimation.}
+      \resumeItem{Implemented a user-friendly Flask web application with an interactive map interface, enabling users to visualize and interact with risk data effectively. The frontend was crafted using HTML, CSS, and JavaScript to ensure a responsive and engaging user experience.}
+      \resumeItem{Deployed the platform on AWS EC2, using Gunicorn as the WSGI HTTP server and Nginx as the reverse proxy, to ensure scalable and reliable access, handling varying loads with optimal performance.}
+    \resumeItemListEnd
+
+    \resumeSubheading
+    {NoMoreBorder: A Window Managing Utility}{Feb. 2024 - Mar. 2024}
+    {Open Source GitHub Project (Over 2500 downloads)}{Philadelphia, PA}
+    \resumeItemListStart
+      \resumeItem{Developed NoMoreBorder, a portable pyinstaller executable utility enabling any windowed application to run in fullscreen borderless mode, enhancing multitasking experience without changing screen resolution.}
+      \resumeItem{Implemented the backend and UI using Python, leveraging libraries such as customtkinter, pywin32, ctypes to streamline system window manipulation and future developements.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+
+\newpage
+
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+    \resumeSubheading
+    {Voc-Notes  : A Free-to-use AI Notebook Tool}{Apr. 2024 -- Jun. 2024}
+    {Drexel University}{Philadelphia, PA}
+    \resumeItemListStart
+      \resumeItem{Developed a standalone application to transform live lecture audio into structured notes using Google Cloud Speech-to-Text for real-time, accurate transcription.}
+      \resumeItem{Used Apache Spark for data preprocessing to clean and segment text, preparing it for analysis and summarization by Large Language Models (LLMs).}
+      \resumeItem{Orchestrated a summarization and note generation process with Mixtral-8x7b and Llama3-70b, leveraging LLMs to create concise and accessible class notes. Mixtral-8x7b handles large context chunks, while Llama3-70b combines the chunked results into coherent summaries.}
+      \resumeItem{Managed data storage with PyMongo and MongoDB, ensuring efficient data retrieval and scalability.}
+    \resumeItemListEnd
+
+    \resumeSubheading
+    {Alzheimer's Classification using OASIS Dataset}{Nov. 2023 -- Dec. 2023}
+    {Drexel University}{Philadelphia, PA}
+    \resumeItemListStart
+      \resumeItem{Leveraged the OASIS Alzheimer's Detection Dataset, containing 80,000 brain MRI images of 461 patients, for classifying Alzheimer's progression based on Clinical Dementia Rating (CDR) values.}
+      \resumeItem{Implemented Logistic Regression and LDA machine learning models from scratch, achieving 81\% and 73\% accuracy, respectively, for binary classification.}
+      \resumeItem{Executed Multiclass Analysis using KNN and Naive Bayes models with image preprocessing (Blur, Canny edge), achieving a peak accuracy of 73\% with KNN using Canny edge.}
+      \resumeItem{Developed custom one vs. one Logistic Regression and LDA models, attaining 84\% accuracy for Logistic Regression and 78\% for LDA; subsequently ensembled them to achieve a final accuracy of 86\% for Multi-Class Classification.}
+    \resumeItemListEnd
+      
+    \resumeSubheading
+    {Sentiment Analysis of Indian Political Tweets 2023}{Feb. 2023 -- Jun. 2023}
+    {Bengal Institute of Technology}{Kolkata, WB}
+    \resumeItemListStart
+      \resumeItem{Created a robust Long Short-Term Memory model for sentiment analysis, accurately categorizing tweets into positive, neutral, or negative sentiments.}
+      \resumeItem{Efficiently gathered tweets using Tweepy and merged with \emph{Labeled 2021 Indian Political Dataset} from Kaggle, expanding the data source for analysis.}
+      \resumeItem{Utilized Natural Language Processing techniques and Global Vector word embeddings for data preprocessing, ensuring the dataset's readiness for analysis.}
+      \resumeItem{Validated sentiment predictions with a 96\% accuracy, by integrating the VADER sentiment analysis, offering a comprehensive model accuracy comparison.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Mono, Multi and Cross Lingual Audio Emotion analysis}{Dec. 2022 -- Mar. 2023}
+    {Bengal Institute of Technology}{Kolkata, WB}
+    \resumeItemListStart
+      \resumeItem{Developed and deployed LSTM, Bidirectional LSTM, and GRU models for precise emotion recognition in audio samples, tuning their proficiency across diverse languages.}
+      \resumeItem{Utilized EMODB, EMOVO, RAVDESS, TESS, and Polish audio datasets, ensuring comprehensive and multilingual training and testing for emotion classification.}
+      \resumeItem{Applied Sklearn to generate classification reports and confusion matrices, gaining an in-depth understanding of emotional cues across different linguistic and cultural contexts.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+
+
+%-----------Activities-----------
+\section{Activities}
+\begin{tabular}{p{0.99\linewidth}}
+    \hspace{0.15in}\textbf{Course Assistant}, College of Computing and Informatics 
+        \hfill \textbf{Apr. 2024 -- Present} \\
+    \hspace{0.15in}\textbf{CCI Dean's Fellowship}, College of Computing and Informatics 
+        \hfill \textbf{Jul. 2023 -- Present} \\
+    \hspace{0.15in}\textbf{Active Member}, Drexel IEEE
+        \hfill \textbf{Oct. 2023 -- Present}
+\end{tabular}
+
+
+%-----------Certificates-----------
+\section{Certificates}
+\begin{tabular}{p{0.99\linewidth}}
+    \hspace{0.15in}\textbf{Reinforcement Learning}, Coursera by Google
+        \hfill \textbf{March 2023} \\
+    \hspace{0.15in}\textbf{Google Data Analytics Professional Certification}, Coursera by Google
+        \hfill \textbf{August 2022} \\
+\end{tabular}
+
+
+
+%-------------------------------------------
+\end{document}

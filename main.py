@@ -1,53 +1,95 @@
-import openai, fitz, time
+import openai, time
+import os
+import subprocess
+from together import Together
+from dotenv import load_dotenv
 
-def read_text(textname: str):
-    with open(textname, 'r') as f:
+load_dotenv()
+
+
+def read_file(filename: str):
+    with open(filename, 'r', encoding='utf-8') as f:
         return f.read()
 
-def read_pdf(pdfname: str):
-    text = ""
-    with fitz.open(pdfname) as f:
-        for page in f:
-            text += page.get_text()
-        return text
-
-# tokens per minute -> 6000
+# groq tokens per minute -> 6000
 # time.sleep(59)
 
-def resume_prompt_builder(master_resume_pdf, base_prompt_text, job_desc_text):
-    master_resume = read_pdf(master_resume_pdf)
-    base_prompt = read_text(base_prompt_text)
-    job_desc = read_text(job_desc_text)
 
-    final_prompt = base_prompt + '\n\n<master resume>\n\n' + master_resume + '\n\n</master resume>\n\n' + '\n\n<job_desc>\n\n' + job_desc + '\n\n</job_desc>\n\n'
+def resume_prompt_builder(main_tex, base_prompt_text, job_desc_text):
+    master_resume = read_file(main_tex).split("%%%%%%  RESUME STARTS HERE  %%%%%%")[1]
+    base_prompt = read_file(base_prompt_text)
+    job_desc = read_file(job_desc_text)
+
+    final_prompt = f"""
+    {base_prompt}
+
+    <master_resume>
+    {master_resume}
+    </master_resume>
+
+    <job_desc>
+    {job_desc}
+    </job_desc>
+    """
     return final_prompt
 
 
+def generate_pdf(latex_content):
+    print('generating PDF...')
+
+    tex_file = "resume.tex"
+    with open(tex_file, "w", encoding="utf-8") as f:
+        f.write(latex_content)
+
+    with open(os.devnull, 'w') as devnull:
+        subprocess.run(["pdflatex", tex_file], stdout=devnull, stderr=devnull, check=True)
+
+    for ext in [".log", ".aux", ".out"]:
+        aux_file = tex_file.replace(".tex", ext)
+        if os.path.exists(aux_file):
+            os.remove(aux_file)
+    
+    print('PDF generated.')
+
+
 def call_LLM(final_prompt: str):
-    client = openai.Client(
-        base_url="https://api.groq.com/openai/v1",
-        api_key=""
-    )
+    print('calling LLM...')
 
+    # client = openai.Client(
+    #     base_url="https://api.groq.com/openai/v1",
+    #     api_key=os.getenv("GROQ_API_KEY")
+    # )
 
-    {
-        "role": "user",
-        "content": final_prompt
-    }
-
+    client = Together()
     response = client.chat.completions.create(
-        model="deepseek-r1-distill-llama-70b",
-        messages=[{"role": "user", "content": "hi, who are you. reply to me in markdown"}],
-        temperature=0.7
+        # model="deepseek-ai/DeepSeek-V3",
+        model="deepseek-ai/DeepSeek-R1",
+        messages=
+            [
+                {
+                    "role": "user",
+                    "content": final_prompt
+                }
+            ],
+        temperature=0.5,
+        top_p=0.5,
+        top_k=30,
+        max_tokens=3000,
+        repetition_penalty=1,
     )
 
     content = response.choices[0].message.content
     # print(response.choices[0].message)
-    print(f"Content: {content}")
+
+    print(f"COT: {content.split('</think>')[0]}")
+    return content.split("</think>")[1]
 
 
+if __name__ == "__main__":
+    prompt = resume_prompt_builder('main.tex', 'prompt.txt', 'job_desc.txt')
+    latex_styling = read_file('main.tex').split("%%%%%%  RESUME STARTS HERE  %%%%%%")[0]
+    # generated_resume = read_file('main.tex').split("%%%%%%  RESUME STARTS HERE  %%%%%%")[1]
 
-    
-
-print(read_pdf('Imon_s_Resume_v10.pdf'))
-
+    # # typical token count 7778 in | 2793 out
+    generated_resume = call_LLM(prompt)
+    generate_pdf(latex_styling + generated_resume)

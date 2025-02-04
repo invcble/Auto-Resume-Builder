@@ -1,0 +1,19 @@
+Data AI/ML Engineer -
+
+Here are the 3-4 skills we need as mandatory for AI/ML engineer.
+
+
+Azure Machine Learning Services:
+worked on Azure's ML services like Azure ML Studio for designing, deploying, and improving machine learning models is essential.
+Understanding various Azure resources (such as Azure Databricks, Azure Machine Learning pipelines, and Azure Cognitive Services) and how they integrate is vital.
+Programming Skills: Proficiency in programming languages such as Python (R is a plus), PowerShell/AzureCli are essential, as these are commonly used for data science and machine learning tasks on Azure.
+Data Engineering:
+Understanding of data manipulation/wrangling techniques using Spark (SQL/Scala/Python ) or Azure Data Factory
+familiarity with big data technologies hosted on Azure like HDInsight/ Cosmos DB / Azure SQL Data Warehouse.
+Ability to handle large datasets and understanding data streaming processes.
+Machine Learning and Deep Learning (Good to Have): Understanding of machine learning algorithms (supervised and unsupervised learning, neural networks, TensorFlow or PyTorch etc.) concepts and their applications.
+
+
+Additionally, having a good grasp of statistics and data analysis and a team player, are also important.
+
+Familiarity with DevOps practices, including continuous integration and delivery as they relate to machine learning projects, can be a plus.
