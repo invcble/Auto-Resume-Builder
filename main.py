@@ -13,9 +13,6 @@ def read_file(filename: str):
     with open(filename, 'r', encoding='utf-8') as f:
         return f.read()
 
-# groq tokens per minute -> 6000
-# time.sleep(59)
-
 
 def resume_prompt_builder(main_tex, base_prompt_text, job_desc_text):
     master_resume = read_file(main_tex).split("%%%%%%  RESUME STARTS HERE  %%%%%%")[1]
@@ -58,13 +55,13 @@ def call_LLM(final_prompt: str):
     print('calling LLM...')
 
     # client = openai.Client(
-    #     base_url="https://api.groq.com/openai/v1",
-    #     api_key=os.getenv("GROQ_API_KEY")
+    #     base_url="https://api.studio.nebius.ai/v1/",
+    #     api_key=os.getenv("NEBIUS_API_KEY")
     # )
 
     client = Together()
+
     response = client.chat.completions.create(
-        # model="deepseek-ai/DeepSeek-V3",
         model="deepseek-ai/DeepSeek-R1",
         messages=
             [
@@ -76,12 +73,11 @@ def call_LLM(final_prompt: str):
         temperature=0.5,
         top_p=0.5,
         top_k=30,
-        max_tokens=3000,
+        max_tokens=4000,
         repetition_penalty=1,
     )
 
     content = response.choices[0].message.content
-    # print(response.choices[0].message)
 
     print(f"COT: {content.split('</think>')[0]}")
     return content.split("</think>")[1]
@@ -89,6 +85,7 @@ def call_LLM(final_prompt: str):
 
 if __name__ == "__main__":
     prompt = resume_prompt_builder('main.tex', 'prompt.txt', 'job_desc.txt')
+    # print(prompt)
     latex_styling = read_file('main.tex').split("%%%%%%  RESUME STARTS HERE  %%%%%%")[0]
     # generated_resume = read_file('main.tex').split("%%%%%%  RESUME STARTS HERE  %%%%%%")[1]
 
