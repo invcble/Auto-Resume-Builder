@@ -33,10 +33,9 @@ def resume_prompt_builder(main_tex, base_prompt_text, job_desc_text):
     return final_prompt
 
 
-def generate_pdf(latex_content):
+def generate_pdf(latex_content, tex_file):
     print('generating PDF...')
 
-    tex_file = "resume.tex"
     with open(tex_file, "w", encoding="utf-8") as f:
         f.write(latex_content)
 
@@ -91,7 +90,7 @@ if __name__ == "__main__":
 
     # # typical token count 7778 in | 2793 out
     generated_resume = call_LLM(prompt)
-    generate_pdf(latex_styling + generated_resume)
+    generate_pdf(latex_styling + generated_resume, "Resume_ImonBera.tex")
 
     applications_dir = "applications"
     os.makedirs(applications_dir, exist_ok=True)
@@ -103,5 +102,5 @@ if __name__ == "__main__":
     os.makedirs(app_folder, exist_ok=True)
 
     shutil.copy("job_desc.txt", os.path.join(app_folder, "job_desc.txt"))
-    shutil.move("resume.tex", os.path.join(app_folder, "resume.tex"))
+    shutil.move("Resume_ImonBera.tex", os.path.join(app_folder, "Resume_ImonBera.tex"))
     print(f"Application saved in: {app_folder}")
