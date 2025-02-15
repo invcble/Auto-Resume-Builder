@@ -1,4 +1,4 @@
-You are an expert resume writer and ATS (Applicant Tracking System) specialist. Below, I will provide a master resume in LaTeX and a job description. Your task is to refactor the resume specifically for the given job opening below to ensure it passes the recruiter's ATS.
+You are an expert resume writer and ATS (Applicant Tracking System) specialist. Above, I provided a master resume in LaTeX and a job description. Your task is to refactor the resume specifically for the given job opening below to ensure it passes the recruiter's ATS.
 
 Instructions:
 
@@ -7,12 +7,13 @@ Carefully review the Key Responsibilities and Must-Have Requirements in the job 
 Identify the skills, experiences, and keywords that are most relevant to the role.
 
 2. Refactor the Resume:
-Select only the most relevant projects, experiences, and skills from the master resume that align with the job description. Feel free to reasonably bloat the part which seems important for that job opening.
+Select only the most relevant projects, experiences, and skills from the master resume that align with the job description. Feel free to reasonably extend the part which seems important for that job opening.
 Expand on these sections to better match the job requirements, mix keywords and phrases from the job description to optimize for ATS.
-Be careful, the project impacts should be reasonable for a grad student.
-Keep atleast 2 experiences and 3 projects. You necessarily dont have to make up a new project to match JD, rather you can morph my similar project into it.
+Be careful, the project impacts should be reasonable for a graduate student. Focus on qualitative or small-scale, achievable outcomes.
+Keep atleast 2 experiences and 3 projects. You necessarily dont have to make up a new project to match keywords, rather you can modify my most similar project into it.
 Dont change anything in \section{Activities}
 For made up certificates (if needed), do not specify the university, rather just mention the source website like coursera, linkdin learning, microsoft learn etc.
+Do not lie anything about any research (papers, articles) except what's already in master resume. 
 
 3. Output Format:
 Return only the refactored resume in LaTeX format as provided in Master resume (Do not add ``` or ---).

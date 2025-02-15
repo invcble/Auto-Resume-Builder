@@ -4,6 +4,7 @@ import shutil
 from datetime import datetime
 import subprocess
 from together import Together
+from win11toast import toast
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -13,9 +14,6 @@ def read_file(filename: str):
     with open(filename, 'r', encoding='utf-8') as f:
         return f.read()
 
-# groq tokens per minute -> 6000
-# time.sleep(59)
-
 
 def resume_prompt_builder(main_tex, base_prompt_text, job_desc_text):
     master_resume = read_file(main_tex).split("%%%%%%  RESUME STARTS HERE  %%%%%%")[1]
@@ -23,8 +21,6 @@ def resume_prompt_builder(main_tex, base_prompt_text, job_desc_text):
     job_desc = read_file(job_desc_text)
 
     final_prompt = f"""
-    {base_prompt}
-
     <master_resume>
     {master_resume}
     </master_resume>
@@ -32,14 +28,16 @@ def resume_prompt_builder(main_tex, base_prompt_text, job_desc_text):
     <job_desc>
     {job_desc}
     </job_desc>
+
+    
+    {base_prompt}
     """
     return final_prompt
 
 
-def generate_pdf(latex_content):
+def generate_pdf(latex_content, tex_file):
     print('generating PDF...')
 
-    tex_file = "resume.tex"
     with open(tex_file, "w", encoding="utf-8") as f:
         f.write(latex_content)
 
@@ -52,19 +50,20 @@ def generate_pdf(latex_content):
             os.remove(aux_file)
     
     print('PDF generated.')
+    toast('Resume Generated 🤖')
 
 
 def call_LLM(final_prompt: str):
     print('calling LLM...')
 
     # client = openai.Client(
-    #     base_url="https://api.groq.com/openai/v1",
-    #     api_key=os.getenv("GROQ_API_KEY")
+    #     base_url="https://api.studio.nebius.ai/v1/",
+    #     api_key=os.getenv("NEBIUS_API_KEY")
     # )
 
     client = Together()
+
     response = client.chat.completions.create(
-        # model="deepseek-ai/DeepSeek-V3",
         model="deepseek-ai/DeepSeek-R1",
         messages=
             [
@@ -73,15 +72,14 @@ def call_LLM(final_prompt: str):
                     "content": final_prompt
                 }
             ],
-        temperature=0.5,
-        top_p=0.5,
+        temperature=0.6,
+        top_p=0.6,
         top_k=30,
-        max_tokens=3000,
+        max_tokens=4000,
         repetition_penalty=1,
     )
 
     content = response.choices[0].message.content
-    # print(response.choices[0].message)
 
     print(f"COT: {content.split('</think>')[0]}")
     return content.split("</think>")[1]
@@ -89,12 +87,13 @@ def call_LLM(final_prompt: str):
 
 if __name__ == "__main__":
     prompt = resume_prompt_builder('main.tex', 'prompt.txt', 'job_desc.txt')
+    # print(prompt)
     latex_styling = read_file('main.tex').split("%%%%%%  RESUME STARTS HERE  %%%%%%")[0]
     # generated_resume = read_file('main.tex').split("%%%%%%  RESUME STARTS HERE  %%%%%%")[1]
 
     # # typical token count 7778 in | 2793 out
     generated_resume = call_LLM(prompt)
-    generate_pdf(latex_styling + generated_resume)
+    generate_pdf(latex_styling + generated_resume, "Resume_ImonBera.tex")
 
     applications_dir = "applications"
     os.makedirs(applications_dir, exist_ok=True)
@@ -106,5 +105,5 @@ if __name__ == "__main__":
     os.makedirs(app_folder, exist_ok=True)
 
     shutil.copy("job_desc.txt", os.path.join(app_folder, "job_desc.txt"))
-    shutil.move("resume.tex", os.path.join(app_folder, "resume.tex"))
+    shutil.move("Resume_ImonBera.tex", os.path.join(app_folder, "Resume_ImonBera.tex"))
     print(f"Application saved in: {app_folder}")
