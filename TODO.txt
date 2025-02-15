@@ -1,4 +1,0 @@
-1. database of some sort (excel or something)
-2. COT print to terminal
-3. Markdown to pdf with style (example)
-2. ability to change api (deepseek priority)

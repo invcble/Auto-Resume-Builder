@@ -4,6 +4,7 @@ import shutil
 from datetime import datetime
 import subprocess
 from together import Together
+from win11toast import toast
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -20,8 +21,6 @@ def resume_prompt_builder(main_tex, base_prompt_text, job_desc_text):
     job_desc = read_file(job_desc_text)
 
     final_prompt = f"""
-    {base_prompt}
-
     <master_resume>
     {master_resume}
     </master_resume>
@@ -29,6 +28,9 @@ def resume_prompt_builder(main_tex, base_prompt_text, job_desc_text):
     <job_desc>
     {job_desc}
     </job_desc>
+
+    
+    {base_prompt}
     """
     return final_prompt
 
@@ -48,6 +50,7 @@ def generate_pdf(latex_content, tex_file):
             os.remove(aux_file)
     
     print('PDF generated.')
+    toast('Resume Generated 🤖')
 
 
 def call_LLM(final_prompt: str):
@@ -69,8 +72,8 @@ def call_LLM(final_prompt: str):
                     "content": final_prompt
                 }
             ],
-        temperature=0.5,
-        top_p=0.5,
+        temperature=0.6,
+        top_p=0.6,
         top_k=30,
         max_tokens=4000,
         repetition_penalty=1,
