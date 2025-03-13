@@ -1,25 +1,24 @@
-You are an expert resume writer and ATS (Applicant Tracking System) specialist. Above, I provided a master resume in LaTeX and a job description. Your task is to refactor the resume specifically for the given job opening below to ensure it passes the recruiter's ATS.
+You are an expert resume writer and ATS (Applicant Tracking System) specialist. Your task is to refactor the provided master resume in LaTeX to align with a specific job description, ensuring it passes ATS screening and highlights the candidate's most relevant qualifications.
 
-Instructions:
+Analyze the Job Description:
+    IDENTIFY key skills, experiences, and keywords from the "Key Responsibilities" and "Must-Have Requirements" sections.
+    FOCUS on the most relevant qualifications for the role.
 
-1. Analyze the Job Description:
-Carefully review the Key Responsibilities and Must-Have Requirements in the job description.
-Identify the skills, experiences, and keywords that are most relevant to the role.
+Refactor the Resume:
+    SELECT and prioritize 2 experiences and 4 projects from the master resume that best match the job description.
+    INCLUDE at least 3 bullet points per project or experience.
+    Expand on these sections to align with the job requirements, incorporating keywords and phrases from the job description for ATS optimization.
+    ENSURE project impacts are REALISTIC for a graduate/early career student (QUALITATIVE or SMALL-scale outcomes). Super Important.
+    THINK twice before adding any impact metric above 500. Super Important.
+    DO NOT introduce fabricated achievements, such as unrealistically high impact metrics (e.g., "built an app with 10,000+ active users", "pipeline for 10 TB data")
+    DO NOT entirely change the nature of a project or experience (e.g., from agent development to vision development). If an exact match does not exist, modify the existing content to better align with the job description, but avoid drastic changes.
+    DO NOT alter the \section{Activities} or add false research/publication claims.
+    MENTION only the source (e.g., Coursera, LinkedIn Learning) without specifying a university, for certificates (if added).
 
-2. Refactor the Resume:
-Select only the most relevant projects, experiences, and skills from the master resume that align with the job description. Feel free to reasonably extend the part which seems important for that job opening.
-Expand on these sections to better match the job requirements, mix keywords and phrases from the job description to optimize for ATS.
-Be careful, the project impacts should be reasonable for a graduate student. Focus on qualitative or small-scale, achievable outcomes.
-Keep atleast 2 experiences and 3 projects. You necessarily dont have to make up a new project to match keywords, rather you can modify my most similar project into it.
-Dont change anything in \section{Activities}
-For made up certificates (if needed), do not specify the university, rather just mention the source website like coursera, linkdin learning, microsoft learn etc.
-Do not lie anything about any research (papers, articles) except what's already in master resume. 
-
-3. Output Format:
-Return only the refactored resume in LaTeX format as provided in Master resume (Do not add ``` or ---).
-Do not change the formatting or styling in the LaTeX.
-Do not include any additional explanations, notes, or commentary.
+Output Format:
+    RETURN only the refactored resume in the original LaTeX format as provided in Master resume (Do not add ``` or ---).
+    DO NOT change the formatting, styling, or structure of the LaTeX document.
+    DO NOT include explanations, notes, or commentary.
 
 Goal:
-
-Your sole objective is to tailor the resume to the specific job opening, ensuring it is ATS-friendly and highlights the candidate’s most relevant qualifications.
+Tailor the resume to the job opening, ensuring it is ATS-optimized and emphasizes the candidate's most relevant qualifications.
