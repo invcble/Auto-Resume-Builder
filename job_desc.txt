@@ -1,0 +1,22 @@
+You thrive in a fast-paced startup environment where you can take ownership of technical decisions and see their direct impact on users. You're naturally curious, love diving deep into complex problems, and are comfortable working across the full AI system stack - from model integration to user experience design.
+
+Responsibilities:
+Enhance and expand the capabilities of our AI-powered solution, Ketryx Intelligence, across our platform
+Develop and optimize advanced natural language processing techniques for requirement analysis and traceability, with emphasis on identifying dependencies and potential gaps
+Implement methodologies for AI-assisted software verification and validation processes, focusing on regulated environment requirements
+Design and develop AI-powered document processing and generation systems with continuous validation capabilities
+Build and maintain testing frameworks to evaluate KI's AI components through empirical studies, measuring efficiency gains, accuracy improvements, and user satisfaction metrics
+Establish and implement monitoring systems for continuous validation of AI features in regulated environments
+Lead cross-functional collaboration with the product team to design measurable, impactful AI solutions that address specific user challenges
+Ensure AI systems maintain compliance with medical software requirements through systematic testing and validation protocol
+Required Skills:
+Bachelor’s degree in Computer Science, Applied Computing, or practical experience in related field with focus on AI/ML
+Strong programming skills (e.g. Typescript, Javascript)
+Experience with large language models (LLMs) and natural language processing
+Very good written and verbal communication skills
+Additional Skills:
+Prior experience with TypeScript
+Familiarity with React and GraphQL
+Experience building production systems
+Experience with AI systems in regulated industries
+Understanding of medical device software development processes

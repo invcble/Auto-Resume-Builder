@@ -1,4 +1,3 @@
-import openai, time
 import os
 import shutil
 from datetime import datetime
@@ -56,11 +55,6 @@ def generate_pdf(latex_content, tex_file):
 def call_LLM(final_prompt: str):
     print('calling LLM...')
 
-    # client = openai.Client(
-    #     base_url="https://api.studio.nebius.ai/v1/",
-    #     api_key=os.getenv("NEBIUS_API_KEY")
-    # )
-
     client = Together()
 
     response = client.chat.completions.create(
@@ -73,9 +67,9 @@ def call_LLM(final_prompt: str):
                 }
             ],
         temperature=0.6,
-        top_p=0.6,
-        top_k=30,
-        max_tokens=4000,
+        top_p=0.4,
+        top_k=20,
+        max_tokens=4096,
         repetition_penalty=1,
     )
 
@@ -87,11 +81,10 @@ def call_LLM(final_prompt: str):
 
 if __name__ == "__main__":
     prompt = resume_prompt_builder('main.tex', 'prompt.txt', 'job_desc.txt')
-    # print(prompt)
     latex_styling = read_file('main.tex').split("%%%%%%  RESUME STARTS HERE  %%%%%%")[0]
     # generated_resume = read_file('main.tex').split("%%%%%%  RESUME STARTS HERE  %%%%%%")[1]
-
-    # # typical token count 7778 in | 2793 out
+    
+    # typical token count 7778 in | 2793 out
     generated_resume = call_LLM(prompt)
     generate_pdf(latex_styling + generated_resume, "Resume_ImonBera.tex")
 
