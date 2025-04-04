@@ -1,5 +1,6 @@
 import os
 import shutil
+import json
 from datetime import datetime
 import subprocess
 from together import Together
@@ -14,8 +15,9 @@ def read_file(filename: str):
         return f.read()
 
 
-def resume_prompt_builder(main_tex, base_prompt_text, job_desc_text):
-    master_resume = read_file(main_tex).split("%%%%%%  RESUME STARTS HERE  %%%%%%")[1]
+def resume_prompt_builder(main_json, base_prompt_text, job_desc_text):
+    # master_resume = read_file(main_tex).split("%%%%%%  RESUME STARTS HERE  %%%%%%")[1]
+    master_resume = read_file(main_json).replace("      ", "").replace("  ", "")
     base_prompt = read_file(base_prompt_text)
     job_desc = read_file(job_desc_text)
 
@@ -28,17 +30,54 @@ def resume_prompt_builder(main_tex, base_prompt_text, job_desc_text):
     {job_desc}
     </job_desc>
 
-    
+
     {base_prompt}
     """
     return final_prompt
 
 
-def generate_pdf(latex_content, tex_file):
+def build_subheading(section):
+    items = ""
+    items += "\n      ".join([ f"\\resumeItem{{{detail}}}".replace("%", "\%").replace("&", "\&") for detail in section["details"]])
+
+    return f"""
+\\resumeSubheading
+    {{{section["title"]}}}{{{section["date"]}}}
+    {{{section["organization"]}}}{{{section["location"]}}}
+    \\resumeItemListStart
+      {items}
+    \\resumeItemListEnd
+"""
+
+def build_sub_subheading(section):
+    items = ""
+    items += "\n      ".join([ f"\\resumeItem{{{detail}}}".replace("%", "\%").replace("&", "\&") for detail in section["details"]])
+
+    return f"""
+\\resumeSubSubheading
+    {{{section["title"]}}}{{{section["date"]}}}
+    \\resumeItemListStart
+      {items}
+    \\resumeItemListEnd
+"""
+
+
+def generate_pdf(generated_resume, tex_template, tex_file):
     print('generating PDF...')
 
+    resume_json = json.loads(generated_resume)
+    experiences = "\n\n".join([build_subheading(section) for section in resume_json["experience"]])
+    projects = "\n\n".join([build_sub_subheading(section) for section in resume_json["projects"]])
+
+    with open(tex_template, "r", encoding="utf-8") as f:
+        template = f.read()
+
+    latex_text = template.replace("@@@@ABOUTME@@@@", resume_json["about"])
+    latex_text = latex_text.replace("@@@@EXPERIENCE@@@@", experiences)
+    latex_text = latex_text.replace("@@@@PROJECTS@@@@", projects)
+
     with open(tex_file, "w", encoding="utf-8") as f:
-        f.write(latex_content)
+        f.write(latex_text)
 
     with open(os.devnull, 'w') as devnull:
         subprocess.run(["pdflatex", tex_file], stdout=devnull, stderr=devnull, check=True)
@@ -74,19 +113,19 @@ def call_LLM(final_prompt: str):
     )
 
     content = response.choices[0].message.content
-
+    # print(content)
     print(f"COT: {content.split('</think>')[0]}")
     return content.split("</think>")[1]
 
 
 if __name__ == "__main__":
-    prompt = resume_prompt_builder('main.tex', 'prompt.txt', 'job_desc.txt')
-    latex_styling = read_file('main.tex').split("%%%%%%  RESUME STARTS HERE  %%%%%%")[0]
-    # generated_resume = read_file('main.tex').split("%%%%%%  RESUME STARTS HERE  %%%%%%")[1]
+    prompt = resume_prompt_builder('main.json', 'prompt.txt', 'job_desc.txt')
+    # latex_styling = read_file('main.tex').split("%%%%%%  RESUME STARTS HERE  %%%%%%")[0]
     
     # typical token count 7778 in | 2793 out
     generated_resume = call_LLM(prompt)
-    generate_pdf(latex_styling + generated_resume, "Resume_ImonBera.tex")
+
+    generate_pdf(generated_resume, "main.tex", "Resume_ImonBera.tex")
 
     applications_dir = "applications"
     os.makedirs(applications_dir, exist_ok=True)

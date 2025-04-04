@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Downloads\Auto Resume\main.py", line 89, in <module>
+    generated_resume = call_LLM(prompt)
+                       ^^^^^^^^^^^^^^^^
+  File "c:\Users\Administrator\Downloads\Auto Resume\main.py", line 61, in call_LLM
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\site-packages\together\resources\chat\completions.py", line 136, in create
+    response, _, _ = requestor.request(
+                     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\site-packages\together\abstract\api_requestor.py", line 249, in request
+    resp, got_stream = self._interpret_response(result, stream)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\site-packages\together\abstract\api_requestor.py", line 632, in _interpret_response
+    self._interpret_response_line(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\site-packages\together\abstract\api_requestor.py", line 701, in _interpret_response_line
+    raise self.handle_error_response(resp, rcode, stream_error=stream)
+together.error.RateLimitError: Error code: 429 - {"message": "You are on tier Build Tier 1, which offers 3 queries per minute for this model. Please upgrade to higher tier for higher rate limit at https://api.together.xyz/settings/billing.", "type_": "model_rate_limit"}

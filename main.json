@@ -1,0 +1,88 @@
+{
+  "about": "Master’s candidate in Computer Science with 2+ years of experience in AI/ML, natural language processing, feature engineering, and cloud-based AI solutions. Proven experience in rapid prototyping of LLM applications and ML model finetuning through competitive hackathons. Skilled in full-stack development of AI-powered tools using Python, Databricks, PyTorch, and cloud platforms (AWS, GCP).",
+  "experience": [
+    {
+      "title": "AI Engineer (Intern)",
+      "date": "Jun 2024 - Jan 2025",
+      "organization": "Tapistro, Inc",
+      "location": "San Francisco, CA",
+      "details": [
+        "Developed LLM Agentic RAG framework with Function Calling and JSON extractor, improving query response accuracy & reducing ’no-answer’ scenarios through smart routing and vector database optimization",
+        "Designed autonomous AI agent with cache-integrated periodic web scraper using Selenium and BeautifulSoup, for B2B GTM enrichment",
+        "Fine-tuned and served Hugging Face models using quantized formats (GGUF, INT8) with vLLM & Llama.cpp, achieving cost reduction from $400 (GPT-4 API) to only $38 per billing cycle while maintaining similar performance",
+        "Built CI/CD pipelines using GCP Cloud Run and Kubernetes to deploy AI-powered REST APIs, with robust test coverage via Pytest and unittest.mock",
+        "Implemented infrastructure-as-code with Pulumi and Docker Compose for one-click provisioning and scalable environment management"
+      ]
+    },
+    {
+      "title": "Software Engineer (GA)",
+      "date": "Jan 2024 - Jun 2024",
+      "organization": "LeBow College of Business",
+      "location": "Philadelphia, PA",
+      "details": [
+        "Prototyped Python automation tools using PyAutoGUI and PyQt, reducing manual data processing time by 40% in research workflows",
+        "Migrated legacy Perl scripts to Python-based solutions, unifying codebases and simplifying maintenance",
+        "Developed a custom RPC framework with SimpleXMLRPCServer for remote execution, enabling access to research tools from off-site",
+        "Migrated R-based data pipeline to Python, integrating Qualtrics API to parse survey results and generate individualized PDF reports with custom charts",
+        "Automated report distribution via secure email server integration, reducing months of manual follow-up to a few minutes per batch"
+      ]
+    },
+    {
+      "title": "Data Engineer (Volunteer)",
+      "date": "Mar 2024 - Apr 2024",
+      "organization": "Mount Nittany Medical Center",
+      "location": "Philadelphia, PA",
+      "details": [
+        "Automated patient survey data processing via a standalone script (packaged with PyInstaller) to eliminate manual sorting of PDF-based survey reports",
+        "Utilized PyMuPDF (fitz) for text extraction, regex for advanced parsing, and openpyxl for dynamic pivot-table creation and Excel formatting"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Smart RAG Agent with Research Crawler, Hackathon Winner",
+      "date": "Mar 2025",
+      "details": [
+        "Built an intelligent service comparison platform leveraging Retrieval-Augmented Generation (RAG) and Milvus Vector DB for efficient indexing and real-time product data retrieval for Xfinity, Comcast",
+        "Developed multimodal AI pipeline integrating Bing Search API and custom web scrapers for real-time data retrieval",
+        "Deployed a React-based frontend with an intuitive chat interface, complemented by a Flask backend hosted on AWS EC2"
+      ]
+    },
+    {
+      "title": "Climate Risk Analysis Platform, Hackathon Winner",
+      "date": "Apr 2024",
+      "details": [
+        "Designed a React based intuitive, user friendly research tool for Chubb for financial risk prediction using deep learning autoencoder in PyTorch, achieving 89% reconstruction accuracy on climate disaster datasets",
+        "Implemented Poisson distribution modeling for event frequency analysis, statistically predicting future occurrences",
+        "Deployed a scalable AWS infrastructure with Gunicorn WSGI server, handling 20+ concurrent users during testing"
+      ]
+    },
+    {
+      "title": "Voc-Notes: AI-Powered Lecture Transcription",
+      "date": "Apr 2024 - Jun 2024",
+      "details": [
+        "Developed real-time speech-to-text pipeline using Google Cloud APIs and Apache Spark preprocessing",
+        "Fine-tuned Mixtral-8x7b and Llama3-70b models for educational content summarization, effectively reducing note-taking time to zero",
+        "Implemented MongoDB storage system with PyMongo for efficient retrieval of processed transcripts"
+      ]
+    },
+    {
+      "title": "Alzheimer’s Classification using OASIS Dataset",
+      "date": "Nov 2023 - Dec 2023",
+      "details": [
+        "Engineered custom Logistic Regression and LDA models from scratch for MRI analysis, achieving 86% ensemble accuracy",
+        "Processed 80,000+ medical images using OpenCV preprocessing techniques (Canny edge detection, Gaussian blur)",
+        "Developed multiclass classification system using KNN and Naive Bayes models for clinical dementia rating prediction"
+      ]
+    },
+    {
+      "title": "Sentiment Analysis of Indian Political Tweets",
+      "date": "Feb 2023 - Jun 2023",
+      "details": [
+        "Developed an LSTM model for sentiment analysis, classifying Indian political tweets with 96% accuracy",
+        "Collected tweets via Tweepy and custom webscraper while enriching the dataset from kaggle for robust analysis",
+        "Applied NLP techniques and GloVe embeddings for preprocessing, integrating VADER for model validation"
+      ]
+    }
+  ]
+}
