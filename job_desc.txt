@@ -1,15 +1,19 @@
-Job Responsibilities
-Apply expertise in generative AI concepts, including document storage, chunking, vector databases, RAG implementation, and basic fine-tuning methods.
-Conduct research and experiments to explore innovative generative AI techniques, such as AI agents, Agentic AI, hybrid RAG, optimization, and workflow orchestration.
-Collaborate with cloud platforms (e.g., AWS, Azure, GCP) to build Generative AI (GenAI) applications.
-Demonstrate strong proficiency in the Python programming language.
-Required Skills
-Design and develop efficient, maintainable, and reusable Python scripts for data extraction, transformation, and loading (ETL but not equivalent to Big Data) in GenAI application
-Develop, implement, and maintain APIs to integrate GenAI models into applications and workflows.
-
-Nice to Have
-Champion DevOps and MLOps practices, focusing on continuous integration, deployment, and AI model monitoring.
-Leverage tools like Docker, Kubernetes, and Git to build and manage AI pipelines.
-Implement monitoring and logging solutions to ensure the performance and reliability of AI models.
-Collaborate with software engineering and operations teams for seamless AI model integration and deployment.
-Possess familiarity with DevOps and MLOps methodologies, emphasizing CI/CD processes and AI model lifecycle management."
+Role Summary
+Splunk is looking for Bachelor’s or Master's graduates to join our team! As a Machine Learning Engineer, you will work on a real project (or a few) and have an opportunity to enjoy our dynamic environment.
+You will experience Splunking and what defines our culture while honing the skills which separate our development teams from others. Working to support internal and external customer needs, you will collaborate with multi-functional teams, receive mentorship, and gain insight into our values-driven process. Our goal is both to support your growth and development while empowering you for a successful start to your career.
+What you'll get to do
+Integrate AI/ML solutions into Splunk products and services
+Achieve data science and software engineering goals set by you and your mentor
+Learn about Splunk, both the product and the company
+Collaborate closely with software engineers, data scientists, and product managers
+Must-have Qualifications
+Actively pursuing a Bachelor’s or Master's in Computer Science, Software Engineering, Computer Engineering, Electrical Engineering, Mathematics or a related technical field, and a strong record of academic achievement
+Nice-to-have Qualifications
+We’ve taken special care to separate the must-have qualifications from the nice-to-haves. “Nice-to-have” means just that: Nice. To. Have. So, don’t worry if you can’t check off every box. We’re not hiring a list of bullet points–we’re interested in the whole you.
+Coursework or research experience in artificial intelligence and machine learning topics such as time series analysis (univariate and multivariate), anomaly detection, generative AI technology and Large Language Models (LLM)
+Experience programming in a large software project – at school, professionally, or in an open source context
+Coursework and project or internship experience in big data systems or distributed systems
+Exposure to ML frameworks (e.g., TensorFlow, PyTorch, Ray, vLLM) and Python
+Ability to work well with others in a fast-paced environment
+Strong communication skills, verbal and written
+Enthusiasm for solving interesting problems
